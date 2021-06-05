@@ -3,6 +3,13 @@ package rpn;
 import java.util.Scanner;
 
 public class Postfix {
+	public void calculate() {
+		Scanner scanner = new Scanner(System.in);
+		String line = scanner.nextLine();
+		String postfixLine = infixToPostfix(line);
+		int number = evaluate(postfixLine);
+		System.out.println(number);
+	}
 
     public int evaluate(String pfx) {
         Scanner sc = new Scanner(pfx);
