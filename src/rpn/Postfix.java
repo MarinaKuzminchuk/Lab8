@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class Postfix{
 	
-	int res = 0;
-	
-	int x = 0;
-	int y = 0;
 	public int evaluate (String pfx) {
 		
 		 Scanner sc = new Scanner(pfx);
