@@ -2,7 +2,7 @@ package rpn;
 
 import java.util.Scanner;
 
-public abstract class Postfix{
+public class Postfix{
 	
 	int res = 0;
 	
