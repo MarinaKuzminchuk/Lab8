@@ -10,9 +10,8 @@ public class StackAsList<T> implements Stack<T> {
             top = new LinkedListNode<>(element); // create linked list with one node with data = element
         } else {
             LinkedListNode<T> node = new LinkedListNode<>(element); // create new node above top
-            top.setNext(node); // create a link from top to node
-            node.setPrevious(top); // create a link from node to top
-            top = node;
+            node.setNext(top); // create a link from the node to the top
+            top = node; // new node is the new top
         }
     }
 
@@ -22,12 +21,9 @@ public class StackAsList<T> implements Stack<T> {
             return null;
         } else {
             T element = top.getData(); // save the data from the top node to local variable
-            LinkedListNode<T> newTopOfStack = top.getPrevious(); // save the node below the top to local variable
-            if (newTopOfStack != null) {
-                newTopOfStack.setNext(null); // disconnect the new top from the current top
-            }
-            top.setPrevious(null); // disconnect the current top from the new top
-            top = newTopOfStack;
+            LinkedListNode<T> newTop = top.getNext(); // get the new top using the "next" link
+            top.setNext(null); // remove the link between the current top and the new top
+            top = newTop; // declare the new top
             return element;
         }
     }
