@@ -11,6 +11,7 @@ public class Postfix {
 		System.out.println(number);
 	}
 
+	// calculate the result using an expression in the postfix format
     public int evaluate(String pfx) {
         Scanner sc = new Scanner(pfx);
         StackAsList<Integer> stack = new StackAsList<Integer>();
@@ -32,6 +33,7 @@ public class Postfix {
         return stack.pop();
     }
 
+    // convert expression in infix format to postfix
     public String infixToPostfix(String ifx) {
         String[] tokens = ifx.split(" ");
         StringBuilder result = new StringBuilder();
