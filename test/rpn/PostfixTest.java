@@ -1,4 +1,4 @@
-package lab8;
+package rpn;
 
 import org.junit.Test;
 
