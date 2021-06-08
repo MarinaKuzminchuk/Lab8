@@ -27,7 +27,9 @@ public class Postfix {
             else if (op == '-') stack.push(a - b);
             else if (op == '*') stack.push(a * b);
             else if (op == '/') stack.push(a / b);
-            else if (op == '%') stack.push(a % b);
+            else if (op == '^') {for (int i = 1; i < b; i++){
+               a = a*a;
+            } stack.push(a);}
         }
         sc.close();
         return stack.pop();
