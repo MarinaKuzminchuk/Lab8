@@ -3,33 +3,34 @@ package rpn;
 import java.util.Scanner;
 
 public class Postfix {
-	public void calculate() {
-		Scanner scanner = new Scanner(System.in);
-		String line = scanner.nextLine();
-		String postfixLine = infixToPostfix(line);
-		int number = evaluate(postfixLine);
-		System.out.println(number);
-	}
+    public void calculate() {
+        Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
+        String postfixLine = infixToPostfix(line);
+        double number = evaluate(postfixLine);
+        System.out.println(number);
+    }
 
-	// calculate the result using an expression in the postfix format
-    public int evaluate(String pfx) {
+    // calculate the result using an expression in the postfix format
+    public double evaluate(String pfx) {
         Scanner sc = new Scanner(pfx);
-        StackAsList<Integer> stack = new StackAsList<Integer>();
+        StackAsList<Double> stack = new StackAsList<Double>();
         while (sc.hasNext()) {
             if (sc.hasNextInt()) {
-                stack.push(sc.nextInt());
+                stack.push(sc.nextDouble());
                 continue;
             }
-            int b = stack.pop();
-            int a = stack.pop();
+            double b = stack.pop();
+            double a = stack.pop();
             char op = sc.next().charAt(0);
             if (op == '+') stack.push(a + b);
             else if (op == '-') stack.push(a - b);
             else if (op == '*') stack.push(a * b);
             else if (op == '/') stack.push(a / b);
-            else if (op == '^') {for (int i = 1; i < b; i++){
-               a = a*a;
-            } stack.push(a);}
+            else if (op == '^') stack.push(Math.pow(a,b));
+
+
+
         }
         sc.close();
         return stack.pop();
@@ -81,7 +82,7 @@ public class Postfix {
         }
     }
     // defines precedence for operators
-    public int precedence(String operator) {
+    public double precedence(String operator) {
         if ("+".equals(operator) || "-".equals(operator))
             return 1;
         else if ("*".equals(operator) || "/".equals(operator))
@@ -90,5 +91,4 @@ public class Postfix {
             return 3;
         return 0;
     }
-
 }
